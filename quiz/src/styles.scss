@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body,
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: rgb(29, 137, 253);
+  background: linear-gradient(
+    90deg,
+    rgba(29, 137, 253, 1) 0%,
+    rgba(69, 252, 242, 1) 48%
+  );
+  font-family: "League Spartan", sans-serif;
+}

@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Kategorie</h1>
+  <div class="container__categories">
+    <div
+      class="container__categories__category"
+      *ngFor="let category of categories"
+    >
+      <a
+        class="container__categories__category--a"
+        href="#"
+        [routerLink]="['/questions', category.id]"
+        >{{ category.name }}</a
+      >
+    </div>
+  </div>
+</div>
