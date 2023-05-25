@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, Subscription, map, takeUntil } from 'rxjs';
+import { CategoryModel } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -6,8 +8,9 @@ import { CategoryService } from 'src/app/services/category.service';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
 })
-export class CategoryComponent implements OnInit {
-  categories: any[] = [];
+export class CategoryComponent implements OnInit, OnDestroy {
+  categories: CategoryModel[] = [];
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private service: CategoryService) {}
 
@@ -15,9 +18,17 @@ export class CategoryComponent implements OnInit {
     this.getCategories();
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+  }
+
   getCategories(): void {
-    this.service.getCategories().subscribe((data) => {
-      this.categories = data;
-    });
+    this.service
+      .getCategories()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.categories = data;
+      });
   }
 }

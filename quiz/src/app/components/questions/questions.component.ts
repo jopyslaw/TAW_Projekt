@@ -11,10 +11,13 @@ export class QuestionsComponent implements OnInit {
 
   constructor(private service: QuestionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getQuestions();
+  }
 
   getQuestions(): void {
     this.service.getQuestions().subscribe((data) => {
+      console.log(data);
       this.questions = data;
     });
   }

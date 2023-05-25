@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__questions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 50%;
+    height: 300px;
+    border-radius: 20px;
+  }
+}

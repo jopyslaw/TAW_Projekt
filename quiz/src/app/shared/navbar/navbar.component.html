@@ -1,11 +1,27 @@
 <nav class="navbar">
-  <ul class="navbar__list">
-    <li>Home</li>
-    <li>Categories</li>
-    <li>Add Question</li>
-    <li>Add Category</li>
-    <li>Sign In</li>
-    <li>Login</li>
-    <li>Logout</li>
-  </ul>
+  <div class="navbar__left">
+    <div class="navbar__button">
+      <a href="#" [routerLink]="['']">Home</a>
+    </div>
+    <div class="navbar__button">
+      <a href="#" [routerLink]="['categories']">Category</a>
+    </div>
+    <div class="navbar__button" *ngIf="authService.isLoggedIn()">
+      <a href="#" [routerLink]="['addQuestion']">Add Question</a>
+    </div>
+    <div class="navbar__button" *ngIf="authService.isLoggedIn()">
+      <a href="#" [routerLink]="['addCategory']">Add Category</a>
+    </div>
+  </div>
+  <div class="navbar__right">
+    <div class="navbar__button" *ngIf="!authService.isLoggedIn()">
+      <a href="#" [routerLink]="['signup']">Sing up</a>
+    </div>
+    <div class="navbar__button" *ngIf="!authService.isLoggedIn()">
+      <a href="#" [routerLink]="['signin']">Sign in</a>
+    </div>
+    <div class="navbar__button" *ngIf="authService.isLoggedIn()">
+      <a>Sing out</a>
+    </div>
+  </div>
 </nav>
