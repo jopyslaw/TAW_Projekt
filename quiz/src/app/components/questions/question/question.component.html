@@ -3,17 +3,8 @@
     {{ questionData.text }}
   </div>
   <div class="container__answers">
-    <div class="container__answer">
-      {{ questionData.odpA }}
-    </div>
-    <div class="container__answer">
-      {{ questionData.odpB }}
-    </div>
-    <div class="container__answer">
-      {{ questionData.odpC }}
-    </div>
-    <div class="container__answer">
-      {{ questionData.odpD }}
+    <div class="container__answer" *ngFor="let answer of questionData.answers">
+      {{ answer }}
     </div>
   </div>
 </div>

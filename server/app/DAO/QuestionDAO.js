@@ -7,10 +7,7 @@ import * as _ from "lodash";
 const questionSchema = new mongoose.Schema(
   {
     text: { type: String },
-    odpA: { type: String },
-    odpB: { type: String },
-    odcC: { type: String },
-    odpD: { type: String },
+    answers: [String],
     goodAnswer: { type: String },
     category_id: { type: String },
   },
