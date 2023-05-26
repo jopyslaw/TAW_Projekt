@@ -40,7 +40,7 @@ const questionEndpoint = (router) => {
     }
   );
 
-  router.post("/api/question", async (request, response, next) => {
+  router.post("/api/question", auth, async (request, response, next) => {
     try {
       const data = request.body;
       const result = await business

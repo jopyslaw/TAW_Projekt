@@ -12,7 +12,7 @@ const categoryEndpoint = (router) => {
     }
   });
 
-  router.post("/api/category", async (request, response, next) => {
+  router.post("/api/category", auth, async (request, response, next) => {
     try {
       const data = request.body;
       const result = await business

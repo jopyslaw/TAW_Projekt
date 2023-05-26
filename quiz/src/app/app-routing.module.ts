@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { CategoryComponent } from './components/category/category.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { EndScreenComponent } from './components/end-screen/end-screen.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'questions/:categoryId',
     component: QuestionsComponent,
+  },
+  {
+    path: 'end/:points',
+    component: EndScreenComponent,
   },
 ];
 

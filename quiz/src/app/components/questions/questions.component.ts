@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Route } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
@@ -8,8 +9,13 @@ import { QuestionService } from 'src/app/services/question.service';
 })
 export class QuestionsComponent implements OnInit {
   public questions: any[] = [];
+  userResponse: any[] = [];
 
-  constructor(private service: QuestionService) {}
+  constructor(
+    private service: QuestionService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.getQuestions();
@@ -20,5 +26,30 @@ export class QuestionsComponent implements OnInit {
       console.log(data);
       this.questions = data;
     });
+  }
+
+  saveUserResponse(data: any): void {
+    const doubeldValue = this.userResponse.find(
+      (userRep) => userRep.questionId === data.questionId
+    );
+    if (doubeldValue) {
+      console.log('if work');
+      this.userResponse = this.userResponse.filter(
+        (userRep) => userRep.questionId !== data.questionId
+      );
+    }
+    this.userResponse.push(data);
+    console.log(this.userResponse);
+  }
+
+  finishGame(): void {
+    let points: number = 0;
+    this.userResponse.forEach((data, index) => {
+      const question = this.questions[index];
+      if (data.answer === question.goodAnswer) {
+        points++;
+      }
+    });
+    this.router.navigate(['end/' + points]);
   }
 }

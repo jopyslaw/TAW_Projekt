@@ -3,8 +3,16 @@
     {{ questionData.text }}
   </div>
   <div class="container__answers">
-    <div class="container__answer" *ngFor="let answer of questionData.answers">
-      {{ answer }}
+    <div
+      class="container__answer"
+      *ngFor="let answer of questionData.answers; let i = index"
+      [ngClass]="{
+        'container__answers--checked-answer': i === checkedAnswer
+      }"
+    >
+      <div (click)="checkAnswer(answer, i)">
+        {{ answer }}
+      </div>
     </div>
   </div>
 </div>

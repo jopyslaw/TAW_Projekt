@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -8,7 +8,22 @@ import { Component, Input, OnInit } from '@angular/core';
 export class QuestionComponent implements OnInit {
   @Input() questionData!: any;
   @Input() index!: number;
+  @Output() userResponse: EventEmitter<{ answer: string; questionId: number }> =
+    new EventEmitter();
+  checkedAnswer!: number;
   constructor() {}
 
   ngOnInit(): void {}
+
+  checkAnswer(answer: string, answerId: number): void {
+    this.checkedAnswer = answerId;
+
+    const userResponse: { answer: string; questionId: number } = {
+      answer,
+      questionId: this.index,
+    };
+    this.userResponse.emit(userResponse);
+    console.log('work');
+    console.log('checkedAnswer', this.checkedAnswer);
+  }
 }

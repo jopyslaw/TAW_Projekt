@@ -18,6 +18,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { CategoryService } from './services/category.service';
 import { AuthService } from './services/auth.service';
 import { QuestionService } from './services/question.service';
+import { EndScreenComponent } from './components/end-screen/end-screen.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { QuestionService } from './services/question.service';
     QuestionComponent,
     SigninComponent,
     SignupComponent,
+    EndScreenComponent,
   ],
   imports: [
     BrowserModule,

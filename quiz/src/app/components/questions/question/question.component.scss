@@ -9,6 +9,9 @@
   }
 
   &__answers {
+    &--checked-answer {
+      background-color: rgb(146, 197, 252);
+    }
   }
 
   &__answer {
