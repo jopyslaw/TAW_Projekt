@@ -6,6 +6,9 @@ import { QuestionsComponent } from './components/questions/questions.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { EndScreenComponent } from './components/end-screen/end-screen.component';
+import { AddDataComponent } from './components/add-data/add-data.component';
+import { TokenGuard } from './guards/token.guard';
+import { ModifyDataComponent } from './components/modify-data/modify-data.component';
 
 const routes: Routes = [
   {
@@ -31,6 +34,16 @@ const routes: Routes = [
   {
     path: 'end/:points',
     component: EndScreenComponent,
+  },
+  {
+    path: 'addData',
+    component: AddDataComponent,
+    canActivate: [TokenGuard],
+  },
+  {
+    path: 'modify',
+    component: ModifyDataComponent,
+    canActivate: [TokenGuard],
   },
 ];
 

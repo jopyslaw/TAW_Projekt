@@ -19,6 +19,8 @@ import { CategoryService } from './services/category.service';
 import { AuthService } from './services/auth.service';
 import { QuestionService } from './services/question.service';
 import { EndScreenComponent } from './components/end-screen/end-screen.component';
+import { AddDataComponent } from './components/add-data/add-data.component';
+import { ModifyDataComponent } from './components/modify-data/modify-data.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { EndScreenComponent } from './components/end-screen/end-screen.component
     SigninComponent,
     SignupComponent,
     EndScreenComponent,
+    AddDataComponent,
+    ModifyDataComponent,
   ],
   imports: [
     BrowserModule,

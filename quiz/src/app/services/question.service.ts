@@ -13,4 +13,8 @@ export class QuestionService {
   getQuestions(): Observable<any[]> {
     return this.http.get<any[]>(this.url + '/questions');
   }
+
+  addQuestion(data: any): Observable<any> {
+    return this.http.post(this.url + '/question', data);
+  }
 }
