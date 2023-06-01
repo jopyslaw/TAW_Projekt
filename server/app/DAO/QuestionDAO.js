@@ -59,10 +59,26 @@ const addQuestionOrUpdate = async (data) => {
   });
 };
 
+const deleteQuestion = async (questionId) => {
+  const result = await QuestionModel.findOneAndDelete({ _id: questionId });
+  if (result) {
+    return mongoConverter(result);
+  }
+};
+
+const queryQuestionById = async (questionId) => {
+  const result = await QuestionModel.findOne({ _id: questionId });
+  if (result) {
+    return mongoConverter(result);
+  }
+};
+
 export default {
   queryAllQuestions,
   queryQuestionsFromCategory,
   queryQuestionsFromCategoryWithLimit,
   addQuestionOrUpdate,
+  deleteQuestion,
+  queryQuestionById,
   model: QuestionModel,
 };

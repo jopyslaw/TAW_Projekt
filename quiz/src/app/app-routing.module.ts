@@ -1,3 +1,4 @@
+import { UpdateDataComponent } from './components/update-data/update-data.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -9,6 +10,7 @@ import { EndScreenComponent } from './components/end-screen/end-screen.component
 import { AddDataComponent } from './components/add-data/add-data.component';
 import { TokenGuard } from './guards/token.guard';
 import { ModifyDataComponent } from './components/modify-data/modify-data.component';
+import { UpdateCategoryComponent } from './components/update-category/update-category.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,16 @@ const routes: Routes = [
   {
     path: 'modify',
     component: ModifyDataComponent,
+    canActivate: [TokenGuard],
+  },
+  {
+    path: 'update-question/:id',
+    component: UpdateDataComponent,
+    canActivate: [TokenGuard],
+  },
+  {
+    path: 'update-category/:id',
+    component: UpdateCategoryComponent,
     canActivate: [TokenGuard],
   },
 ];

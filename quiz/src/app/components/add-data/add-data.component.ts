@@ -22,7 +22,7 @@ export class AddDataComponent implements OnInit, OnDestroy {
     text: '',
     answers: this.fb.array([this.fb.control('')]),
     goodAnswer: '',
-    categoryId: '',
+    category_id: '',
   });
 
   get answers() {
@@ -62,6 +62,7 @@ export class AddDataComponent implements OnInit, OnDestroy {
   }
 
   submitQuestion(): void {
+    console.log(this.questionForm.value);
     this.questionService
       .addQuestion(this.questionForm.value)
       .pipe(takeUntil(this.destroy$))

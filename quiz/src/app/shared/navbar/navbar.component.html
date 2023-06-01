@@ -7,10 +7,10 @@
       <a href="#" [routerLink]="['categories']">Category</a>
     </div>
     <div class="navbar__button" *ngIf="authService.isLoggedIn()">
-      <a href="#" [routerLink]="['addQuestion']">Add Question</a>
+      <a href="#" [routerLink]="['addData']">Add data</a>
     </div>
     <div class="navbar__button" *ngIf="authService.isLoggedIn()">
-      <a href="#" [routerLink]="['addCategory']">Add Category</a>
+      <a href="#" [routerLink]="['modify']">Modify data</a>
     </div>
   </div>
   <div class="navbar__right">
@@ -21,7 +21,7 @@
       <a href="#" [routerLink]="['signin']">Sign in</a>
     </div>
     <div class="navbar__button" *ngIf="authService.isLoggedIn()">
-      <a>Sing out</a>
+      <a (click)="signOut()">Sing out</a>
     </div>
   </div>
 </nav>

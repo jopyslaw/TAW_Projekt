@@ -17,7 +17,7 @@ const questionEndpoint = (router) => {
       const categoryId = request.params.categoryId;
       const result = await business
         .getQuestionManager()
-        .queryAllQuestionsFromCategory(categoryId);
+        .queryQuestionsFromCategory(categoryId);
       response.status(200).send(result);
     } catch (error) {
       console.error(error);
@@ -51,6 +51,38 @@ const questionEndpoint = (router) => {
       console.error(error);
     }
   });
+
+  router.delete(
+    "/api/question/:questionId",
+    auth,
+    async (request, response, next) => {
+      try {
+        const questionId = request.params.questionId;
+        const result = await business
+          .getQuestionManager()
+          .deleteQuestion(questionId);
+        response.status(200).send(result);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  );
+
+  router.get(
+    "/api/question/:questionId",
+    auth,
+    async (request, response, next) => {
+      try {
+        const questionId = request.params.questionId;
+        const result = await business
+          .getQuestionManager()
+          .getQuestionById(questionId);
+        response.status(200).send(result);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  );
 };
 
 export default questionEndpoint;

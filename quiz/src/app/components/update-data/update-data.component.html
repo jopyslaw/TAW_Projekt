@@ -1,29 +1,7 @@
 <div class="container">
   <div class="container__box">
     <div class="container__form">
-      <p>Dodaj kategorię</p>
-      <form [formGroup]="categoryForm" (ngSubmit)="submitCategory()">
-        <div class="container__form-field">
-          <label for="categoryName">Wpisz nazwę kategorii</label>
-          <input
-            type="text"
-            id="categoryName"
-            name="categoryName"
-            formControlName="name"
-            class="container__form-field--input-style"
-          />
-        </div>
-        <div class="container__form-buttons">
-          <button class="container__form-buttons--style">
-            Dodaj kategorię
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="container__box">
-    <div class="container__form">
-      <p>Dodaj pytanie</p>
+      <p>Edytuj pytanie</p>
       <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
         <div class="container__form-field">
           <label for="categoryId">Wybierz kategorię</label>
@@ -96,7 +74,7 @@
         </div>
         <div class="container__form-buttons">
           <button type="submit" class="container__form-buttons--style">
-            Dodaj pytanie
+            Edytuj pytanie
           </button>
         </div>
       </form>

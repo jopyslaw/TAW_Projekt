@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+
+  &__box {
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 45%;
+    background-color: white;
+    border-radius: 20px;
+    min-height: 200px;
+    gap: 2px;
+  }
+
+  &__field {
+    width: 90%;
+    background-color: aqua;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 5px;
+    color: black;
+
+    &--wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 5px;
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    &--modify {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: darkgreen;
+      border-radius: 20px;
+      padding: 10px;
+    }
+
+    &--delete {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: red;
+      border-radius: 20px;
+      padding: 10px;
+    }
+  }
+}

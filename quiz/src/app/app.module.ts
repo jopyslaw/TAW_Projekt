@@ -21,6 +21,9 @@ import { QuestionService } from './services/question.service';
 import { EndScreenComponent } from './components/end-screen/end-screen.component';
 import { AddDataComponent } from './components/add-data/add-data.component';
 import { ModifyDataComponent } from './components/modify-data/modify-data.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateDataComponent } from './components/update-data/update-data.component';
+import { UpdateCategoryComponent } from './components/update-category/update-category.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { ModifyDataComponent } from './components/modify-data/modify-data.compon
     EndScreenComponent,
     AddDataComponent,
     ModifyDataComponent,
+    UpdateDataComponent,
+    UpdateCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,7 @@ import { ModifyDataComponent } from './components/modify-data/modify-data.compon
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     CategoryService,

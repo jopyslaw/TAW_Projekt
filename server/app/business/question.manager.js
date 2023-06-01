@@ -32,11 +32,27 @@ const create = (context) => {
     }
   };
 
+  const deleteQuestion = async (questionId) => {
+    const result = await QuestionDAO.deleteQuestion(questionId);
+    if (result) {
+      return result;
+    }
+  };
+
+  const getQuestionById = async (questionId) => {
+    const result = await QuestionDAO.queryQuestionById(questionId);
+    if (result) {
+      return result;
+    }
+  };
+
   return {
     queryAllQuestions,
     queryQuestionsFromCategory,
     queryQuestionsFromCategoryWithLimit,
+    deleteQuestion,
     createNewOrUpdate,
+    getQuestionById,
   };
 };
 

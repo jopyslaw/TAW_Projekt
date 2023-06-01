@@ -18,4 +18,14 @@ export class CategoryService {
   addCategory(data: any): Observable<any> {
     return this.http.post<any>(this.url + '/api/category', data);
   }
+
+  deleteCategory(categoryId: string): Observable<any> {
+    return this.http.delete(this.url + '/api/category/' + categoryId);
+  }
+
+  getCategory(categoryId: string): Observable<CategoryModel> {
+    return this.http.get<CategoryModel>(
+      this.url + '/api/category/' + categoryId
+    );
+  }
 }

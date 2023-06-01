@@ -1,1 +1,55 @@
-<p>modify-data works!</p>
+<div class="container">
+  <div class="container__box">
+    Kategorie
+    <div class="container__field" *ngFor="let category of categoryList">
+      <div class="container__field--wrapper">
+        <div class="container__field--title">
+          {{ category.name }}
+        </div>
+        <div class="container__field--buttons">
+          <button
+            class="container__field--modify"
+            (click)="onModify('category', category.id)"
+          >
+            Modify
+          </button>
+          <button
+            class="container__field--delete"
+            (click)="onDelete('category', category.id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container__box">
+    Pytania
+    <select [(ngModel)]="categoryOfQuestion" (ngModelChange)="onChange($event)">
+      <option *ngFor="let category of categoryList" [value]="category.id">
+        {{ category.name }}
+      </option>
+    </select>
+    <div class="container__field" *ngFor="let question of questionsList">
+      <div class="container__field--wrapper">
+        <div class="container__field--title">
+          {{ question.text }}
+        </div>
+        <div class="container__field--buttons">
+          <button
+            class="container__field--modify"
+            (click)="onModify('question', question.id)"
+          >
+            Modify
+          </button>
+          <button
+            class="container__field--delete"
+            (click)="onDelete('question', question.id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
