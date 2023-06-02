@@ -15,9 +15,25 @@ const create = (context) => {
     }
   };
 
+  const deleteCategory = async (categoryId) => {
+    const result = await CategoryDAO.deleteCategory(categoryId);
+    if (result) {
+      return result;
+    }
+  };
+
+  const getCategoryById = async (categoryId) => {
+    const result = await CategoryDAO.getCategoryById(categoryId);
+    if (result) {
+      return result;
+    }
+  };
+
   return {
     query,
     createNewOrUpdate,
+    deleteCategory,
+    getCategoryById,
   };
 };
 

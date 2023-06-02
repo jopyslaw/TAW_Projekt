@@ -12,7 +12,7 @@ const categoryEndpoint = (router) => {
     }
   });
 
-  router.post("/api/category", async (request, response, next) => {
+  router.post("/api/category", auth, async (request, response, next) => {
     try {
       const data = request.body;
       const result = await business
@@ -23,6 +23,38 @@ const categoryEndpoint = (router) => {
       console.error(error);
     }
   });
+
+  router.delete(
+    "/api/category/:categoryId",
+    auth,
+    async (request, response, next) => {
+      try {
+        const categoryId = request.params.categoryId;
+        const result = await business
+          .getCategoryManager()
+          .deleteCategory(categoryId);
+        response.status(200).send(result);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  );
+
+  router.get(
+    "/api/category/:categoryId",
+    auth,
+    async (request, response, next) => {
+      try {
+        const categoryId = request.params.categoryId;
+        const result = await business
+          .getCategoryManager()
+          .getCategoryById(categoryId);
+        response.status(200).send(result);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  );
 };
 
 export default categoryEndpoint;

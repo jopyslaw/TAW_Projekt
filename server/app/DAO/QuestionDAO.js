@@ -7,10 +7,7 @@ import * as _ from "lodash";
 const questionSchema = new mongoose.Schema(
   {
     text: { type: String },
-    odpA: { type: String },
-    odpB: { type: String },
-    odcC: { type: String },
-    odpD: { type: String },
+    answers: [String],
     goodAnswer: { type: String },
     category_id: { type: String },
   },
@@ -62,10 +59,26 @@ const addQuestionOrUpdate = async (data) => {
   });
 };
 
+const deleteQuestion = async (questionId) => {
+  const result = await QuestionModel.findOneAndDelete({ _id: questionId });
+  if (result) {
+    return mongoConverter(result);
+  }
+};
+
+const queryQuestionById = async (questionId) => {
+  const result = await QuestionModel.findOne({ _id: questionId });
+  if (result) {
+    return mongoConverter(result);
+  }
+};
+
 export default {
   queryAllQuestions,
   queryQuestionsFromCategory,
   queryQuestionsFromCategoryWithLimit,
   addQuestionOrUpdate,
+  deleteQuestion,
+  queryQuestionById,
   model: QuestionModel,
 };

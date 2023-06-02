@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="container__questions">
+    <ng-container *ngFor="let question of questions; let i = index">
+      <app-question
+        [questionData]="question"
+        [index]="i"
+        (userResponse)="saveUserResponse($event)"
+      ></app-question>
+    </ng-container>
+  </div>
+  <div class="container__buttons">
+    <button class="container__buttons--style" (click)="finishGame()">
+      End Test
+    </button>
+  </div>
+</div>

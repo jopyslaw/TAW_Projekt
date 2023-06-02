@@ -41,8 +41,24 @@ const createNewOrUpdate = async (data) => {
   });
 };
 
+const deleteCategory = async (categoryId) => {
+  const result = await categoryModel.findOneAndDelete({ _id: categoryId });
+  if (result) {
+    return mongoConverter(result);
+  }
+};
+
+const getCategoryById = async (categoryId) => {
+  const result = await categoryModel.findOne({ _id: categoryId });
+  if (result) {
+    return mongoConverter(result);
+  }
+};
+
 export default {
   query: query,
   createNewOrUpdate: createNewOrUpdate,
+  deleteCategory: deleteCategory,
+  getCategoryById: getCategoryById,
   model: categoryModel,
 };
