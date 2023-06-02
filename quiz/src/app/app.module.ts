@@ -24,6 +24,8 @@ import { ModifyDataComponent } from './components/modify-data/modify-data.compon
 import { FormsModule } from '@angular/forms';
 import { UpdateDataComponent } from './components/update-data/update-data.component';
 import { UpdateCategoryComponent } from './components/update-category/update-category.component';
+import { TitlePipe } from './pipes/title.pipe';
+import { HighlightElementDirective } from './directives/highlight-element.directive';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { UpdateCategoryComponent } from './components/update-category/update-cat
     ModifyDataComponent,
     UpdateDataComponent,
     UpdateCategoryComponent,
+    TitlePipe,
+    HighlightElementDirective,
   ],
   imports: [
     BrowserModule,

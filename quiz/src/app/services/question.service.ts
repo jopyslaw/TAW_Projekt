@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { QuestionModel } from '../models/question.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,23 +11,27 @@ export class QuestionService {
 
   constructor(private http: HttpClient) {}
 
-  getQuestions(): Observable<any[]> {
-    return this.http.get<any[]>(this.url + '/questions');
+  getQuestions(): Observable<QuestionModel[]> {
+    return this.http.get<QuestionModel[]>(this.url + '/questions');
   }
 
-  getQuestionsForCategory(categoryId: string): Observable<any[]> {
-    return this.http.get<any[]>(this.url + '/questions/' + categoryId);
+  getQuestionsForCategory(categoryId: string): Observable<QuestionModel[]> {
+    return this.http.get<QuestionModel[]>(
+      this.url + '/questions/' + categoryId
+    );
   }
 
-  addQuestion(data: any): Observable<any> {
-    return this.http.post(this.url + '/question', data);
+  addQuestion(data: any): Observable<QuestionModel> {
+    return this.http.post<QuestionModel>(this.url + '/question', data);
   }
 
-  deleteQuestion(questionId: string): Observable<any> {
-    return this.http.delete(this.url + '/question/' + questionId);
+  deleteQuestion(questionId: string): Observable<QuestionModel> {
+    return this.http.delete<QuestionModel>(
+      this.url + '/question/' + questionId
+    );
   }
 
-  getQuestionById(questionId: string): Observable<any> {
-    return this.http.get(this.url + '/question/' + questionId);
+  getQuestionById(questionId: string): Observable<QuestionModel> {
+    return this.http.get<QuestionModel>(this.url + '/question/' + questionId);
   }
 }

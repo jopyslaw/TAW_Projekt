@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { QuestionModel } from 'src/app/models/question.model';
 
 @Component({
   selector: 'app-question',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
-  @Input() questionData!: any;
+  @Input() questionData!: QuestionModel;
   @Input() index!: number;
   @Output() userResponse: EventEmitter<{ answer: string; questionId: number }> =
     new EventEmitter();

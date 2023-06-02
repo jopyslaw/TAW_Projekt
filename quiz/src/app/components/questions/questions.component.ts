@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Route } from '@angular/router';
+import { QuestionModel } from 'src/app/models/question.model';
 import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { QuestionService } from 'src/app/services/question.service';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  public questions: any[] = [];
+  public questions: QuestionModel[] = [];
   userResponse: any[] = [];
 
   constructor(

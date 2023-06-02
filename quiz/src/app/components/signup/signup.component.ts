@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { signUpForm } from './signup.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,11 @@ export class SignupComponent implements OnInit {
   });
   destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -30,6 +35,8 @@ export class SignupComponent implements OnInit {
     this.authService
       .signUp(this.signUpForm.value)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((response) => {});
+      .subscribe((response) => {
+        this.router.navigateByUrl('/');
+      });
   }
 }

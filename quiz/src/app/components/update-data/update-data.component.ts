@@ -87,11 +87,9 @@ export class UpdateDataComponent implements OnInit {
   }
 
   setFormFields(data: any): void {
-    console.log(data);
     this.questionForm.get('text')?.setValue(data.text);
     this.questionForm.get('goodAnswer')?.setValue(data.goodAnswer);
     this.questionForm.get('category_id')?.setValue(data.category_id);
-    console.log(data.answers);
     data.answers.forEach((element: string) => {
       this.addInputWithValue(element);
     });

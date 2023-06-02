@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { signInForm } from './signin.models';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +17,11 @@ export class SigninComponent implements OnInit, OnDestroy {
   });
   destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -32,6 +37,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       .subscribe((response) => {
         if (response && response.token) {
           localStorage.setItem('token', response.token);
+          this.router.navigateByUrl('/');
         }
       });
   }

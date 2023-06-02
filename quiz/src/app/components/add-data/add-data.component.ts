@@ -4,6 +4,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { addCategoryForm, addQuestionForm } from './add-data.models';
 import { Subject, takeUntil } from 'rxjs';
+import { CategoryModel } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-add-data',
@@ -12,7 +13,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class AddDataComponent implements OnInit, OnDestroy {
   destroy$: Subject<void> = new Subject<void>();
-  categories!: any[];
+  categories!: CategoryModel[];
 
   categoryForm: FormGroup<addCategoryForm> = this.fb.group({
     name: [''],
@@ -62,7 +63,6 @@ export class AddDataComponent implements OnInit, OnDestroy {
   }
 
   submitQuestion(): void {
-    console.log(this.questionForm.value);
     this.questionService
       .addQuestion(this.questionForm.value)
       .pipe(takeUntil(this.destroy$))
