@@ -9,13 +9,12 @@
     &__btn {
       display: flex;
       align-items: center;
-      align-content: center;
+      justify-content: center;
       border-radius: 20px;
       background-color: white;
       width: 250px;
       height: 80px;
       font-size: 30px;
-      flex-wrap: wrap;
       transform: scale(1);
       transition: all 0.3s ease-out;
       padding: 5px;
