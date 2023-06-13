@@ -24,7 +24,5 @@ export class QuestionComponent implements OnInit {
       questionId: this.index,
     };
     this.userResponse.emit(userResponse);
-    console.log('work');
-    console.log('checkedAnswer', this.checkedAnswer);
   }
 }

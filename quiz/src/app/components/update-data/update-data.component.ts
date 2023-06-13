@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuestionService } from 'src/app/services/question.service';
@@ -42,7 +42,8 @@ export class UpdateDataComponent implements OnInit {
     private questionService: QuestionService,
     private categoryService: CategoryService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +58,6 @@ export class UpdateDataComponent implements OnInit {
   }
 
   submitQuestion(): void {
-    console.log(this.questionForm.value);
     const data = {
       ...this.questionForm.value,
       id: this.questionData.id,
@@ -65,7 +65,9 @@ export class UpdateDataComponent implements OnInit {
     this.questionService
       .addQuestion(data)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((response) => {});
+      .subscribe((response) => {
+        this.router.navigateByUrl('/modify');
+      });
   }
 
   private getCategories(): void {
@@ -80,7 +82,6 @@ export class UpdateDataComponent implements OnInit {
       .getQuestionById(questionId)
       .pipe(takeUntil(this.destroy$))
       .subscribe((response) => {
-        console.log(response);
         this.questionData = response;
         this.setFormFields(response);
       });

@@ -3,7 +3,7 @@ import { addCategoryForm } from '../add-data/add-data.models';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CategoryService } from 'src/app/services/category.service';
 import { Subject, takeUntil } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category.model';
 
 @Component({
@@ -22,7 +22,8 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy, OnDestroy {
   constructor(
     private categoryService: CategoryService,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +54,9 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy, OnDestroy {
     this.categoryService
       .addCategory(data)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((response) => {});
+      .subscribe((response) => {
+        this.router.navigateByUrl('/modify');
+      });
   }
 
   setValueForForm(value: any): void {

@@ -24,7 +24,6 @@ export class QuestionsComponent implements OnInit {
 
   getQuestions(): void {
     this.service.getQuestions().subscribe((data) => {
-      console.log(data);
       this.questions = data;
     });
   }
@@ -34,13 +33,11 @@ export class QuestionsComponent implements OnInit {
       (userRep) => userRep.questionId === data.questionId
     );
     if (doubeldValue) {
-      console.log('if work');
       this.userResponse = this.userResponse.filter(
         (userRep) => userRep.questionId !== data.questionId
       );
     }
     this.userResponse.push(data);
-    console.log(this.userResponse);
   }
 
   finishGame(): void {

@@ -73,6 +73,12 @@ const queryQuestionById = async (questionId) => {
   }
 };
 
+const deleteAllQuestionsForCategory = async (categoryId) => {
+  const result = await QuestionModel.deleteMany({
+    category_id: categoryId,
+  });
+};
+
 export default {
   queryAllQuestions,
   queryQuestionsFromCategory,
@@ -80,5 +86,6 @@ export default {
   addQuestionOrUpdate,
   deleteQuestion,
   queryQuestionById,
+  deleteAllQuestionsForCategory,
   model: QuestionModel,
 };

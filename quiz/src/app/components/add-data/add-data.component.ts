@@ -59,6 +59,7 @@ export class AddDataComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((response) => {
         this.getCategories();
+        this.categoryForm.reset();
       });
   }
 
@@ -66,7 +67,9 @@ export class AddDataComponent implements OnInit, OnDestroy {
     this.questionService
       .addQuestion(this.questionForm.value)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((response) => {});
+      .subscribe((response) => {
+        this.questionForm.reset();
+      });
   }
 
   private getCategories(): void {
