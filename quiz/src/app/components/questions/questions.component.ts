@@ -11,6 +11,7 @@ import { QuestionService } from 'src/app/services/question.service';
 export class QuestionsComponent implements OnInit {
   public questions: QuestionModel[] = [];
   userResponse: any[] = [];
+  categoryId!: string;
 
   constructor(
     private service: QuestionService,
@@ -19,11 +20,12 @@ export class QuestionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.categoryId = this.route.snapshot.params['categoryId'];
     this.getQuestions();
   }
 
   getQuestions(): void {
-    this.service.getQuestions().subscribe((data) => {
+    this.service.getQuestionsForCategory(this.categoryId).subscribe((data) => {
       this.questions = data;
     });
   }
