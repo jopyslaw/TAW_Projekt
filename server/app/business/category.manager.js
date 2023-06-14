@@ -1,4 +1,5 @@
 import CategoryDAO from "../DAO/CategoryDAO";
+import QuestionDAO from "../DAO/QuestionDAO";
 
 const create = (context) => {
   const query = async () => {
@@ -16,9 +17,10 @@ const create = (context) => {
   };
 
   const deleteCategory = async (categoryId) => {
-    const result = await CategoryDAO.deleteCategory(categoryId);
-    if (result) {
-      return result;
+    const result1 = await CategoryDAO.deleteCategory(categoryId);
+    const result2 = await QuestionDAO.deleteAllQuestionsForCategory(categoryId);
+    if (result1 && result2) {
+      return result1;
     }
   };
 
